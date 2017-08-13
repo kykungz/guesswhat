@@ -2,14 +2,25 @@ extends layout
 
 block content
   script(src="/socket.io/socket.io.js")
+  div.container#myText
+    h1.text-center {{ word }}
   script(type="text/javascript").
     var socket = io()
-    var pathname = window.location.pathname
-    var roomId = pathname.substr(pathname.lastIndexOf('/') + 1)
-    socket.emit('play', {roomId: roomId})
+    socket.emit('play', {roomId: '#{roomId}'})
 
-    socket.on('test', function (data) {
-      console.log(data)
+    new Vue({
+      el: '#myText',
+      data: {
+        word: '',
+        score: 0
+      },
+      mounted: function () {
+        var vm = this
+        socket.on('test', function (data) {
+          console.log(data)
+          vm.word = data
+        })
+      }
     })
 
   h1= title

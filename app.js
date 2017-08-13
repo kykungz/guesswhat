@@ -8,6 +8,7 @@ import bodyParser from 'body-parser'
 import index from './routes/index'
 import users from './routes/users'
 import play from './routes/play'
+import create from './routes/create'
 
 // Express
 const app = express()
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', index)
 app.use('/users', users)
 app.use('/play', play)
+app.use('/create', create)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

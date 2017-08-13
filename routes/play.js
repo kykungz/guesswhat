@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/:id', function(req, res, next) {
   const id = req.params.id
   if (game.hasRoom(id)) {
-    res.render('play', { title: 'Express' })
+    res.render('play', { title: 'Play', roomId: id })
   } else {
     next()
   }

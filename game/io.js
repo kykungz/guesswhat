@@ -4,12 +4,11 @@ import game from './'
 const io = socket_io()
 
 io.on('connection', (socket) => {
-
   socket.on('play', (data) => {
     let roomId = data.roomId
     console.log('room id is', roomId);
     socket.join(roomId)
-    io.in(roomId).emit('test', 'hi from channel ' + roomId)
+    io.in(roomId).emit('test', 'fuckkkkk')
   })
 
   socket.on('status', (data) => {
