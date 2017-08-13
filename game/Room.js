@@ -1,5 +1,8 @@
+import { generateRoomId } from '../libraries/util'
+
 function Room (words) {
   this.id = generateRoomId()
+  console.log(this.id)
   this.wordBank = words
   this.remainingWords = this.wordBank.slice()
   this.state = {

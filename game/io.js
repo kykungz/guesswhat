@@ -1,11 +1,10 @@
 import socket_io from 'socket.io'
-var io = socket_io()
-var socketAPI = {}
+import game from './'
 
+const io = socket_io()
 
 io.on('connection', (socket) => {
-  console.log('socket in');
-  socket.emit('hi', 'this is asdfasdfasfdasdf')
+
   socket.on('play', (data) => {
     let roomId = data.roomId
     console.log('room id is', roomId);
@@ -24,7 +23,4 @@ io.on('connection', (socket) => {
   })
 })
 
-
-socketAPI.io = io
-
-export default socketAPI
+export default io

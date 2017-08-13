@@ -26,8 +26,7 @@ var server = http.createServer(app);
  * Socket.io
  */
 
- var socketAPI = require('../game/socketAPI').default;
- var io = socketAPI.io;
+ var io = require('../game/io').default;
  io.attach(server);
 
 /**
