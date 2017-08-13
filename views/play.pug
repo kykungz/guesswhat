@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  script(src="/socket.io/socket.io.js")
+  script(type="text/javascript").
+    var socket = io()
+    var pathname = window.location.pathname
+    var roomId = pathname.substr(pathname.lastIndexOf('/') + 1)
+    socket.emit('play', {roomId: roomId})
+
+    socket.on('test', function (data) {
+      console.log(data)
+    })
+
+  h1= title
+  p Welcome to #{title}
