@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  script(src="/socket.io/socket.io.js")
+  div.container#myText
+    h1.text-center {{ word }}
+  script(type="text/javascript").
+    var socket = io()
+    socket.emit('play', {roomId: '#{roomId}'})
+
+    new Vue({
+      el: '#myText',
+      data: {
+        word: '',
+        score: 0
+      },
+      mounted: function () {
+        var vm = this
+        socket.on('test', function (data) {
+          console.log(data)
+          vm.word = data
+        })
+      }
+    })
+
+  h1= title
+  p Welcome to #{title}
